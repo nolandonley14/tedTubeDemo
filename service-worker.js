@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/tedTubeDemo/precache-manifest.2e441c98971d07225ec6734192efe658.js"
+  "/tedTubeDemo/precache-manifest.e23c71a3a0f5f1a157581c5b9706462e.js"
 );
 
 workbox.clientsClaim();
