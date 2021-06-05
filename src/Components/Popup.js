@@ -1,20 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../Styles/Popup.css';
-import algoliasearch from 'algoliasearch/lite';
 import {
-  Hits,
-  Pagination,
-  Highlight,
+  Highlight
 } from 'react-instantsearch-dom';
-import { PieChart } from 'react-minimal-pie-chart';
+import YoutubeClient from '../Clients/Youtube.js';
+import VideoPlayer from './VideoPlayer.js';
 
 const Popup = ({showPopup, setShowPopup, info}) => {
-  console.log(info);
+
+  const [videoID, setVideoID] = useState("")
+
+  const openPopup = () => {
+    setShowPopup(prev => !prev);
+    console.log(videoID);
+  };
+
+  const searchVid = async keyword => {
+    const response = await YoutubeClient.get("/search", {
+      params: {
+        q: keyword
+      }
+    });
+
+    setVideoID(response.data.items[0].id.videoId)
+  }
+
   const showHideClassName = showPopup ? "modal display-block" : "modal display-none";
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <img src={info.image_url} align="left" alt={info.name} />
+        {videoID === "" ? <img src={info.image_url} align="left" alt={info.name} /> : null}
+        {videoID === "" ? null : <VideoPlayer videoID={videoID} />}
         <div className="modal-content">
           <div className="modal-info">
             <div className="modal-info-left">
@@ -32,13 +48,18 @@ const Popup = ({showPopup, setShowPopup, info}) => {
             </div>
           </div>
           <ul className="modal-tag-list">
-                {info.tags.map(function(name, index){
+                {info.tags.slice(0,5).map(function(name, index){
                     return <li key={ index }>{name}</li>;
                   })}
-            </ul>
-          <button className="closeBtn" type="button" onClick={() => setShowPopup(prev => !prev)}>
-            Close
-          </button>
+          </ul>
+          <div className="buttonContainer">
+            <button className="watchBtn" type="button" onClick={() => searchVid(info.name)}>
+              Watch
+            </button>
+            <button className="closeBtn" type="button" onClick={() => setShowPopup(prev => !prev)}>
+              Close
+            </button>
+          </div>
         </div>
       </section>
     </div>

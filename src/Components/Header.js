@@ -1,19 +1,8 @@
 import React from 'react';
-import algoliasearch from 'algoliasearch/lite';
 import {
-  InstantSearch,
-  Hits,
-  SearchBox,
-  Pagination,
-  Highlight,
-  ClearRefinements,
-  RefinementList,
-  Configure,
-  connectRefinementList
+  SearchBox
 } from 'react-instantsearch-dom';
-import PropTypes from 'prop-types';
 import '../Styles/Header.css';
-import Moment from 'moment';
 
 
 export default function Header() {

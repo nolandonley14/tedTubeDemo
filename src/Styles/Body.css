@@ -1,0 +1,16 @@
+.hit-name {
+  font-weight: bold;
+  color: #fff;
+  margin: .5em
+}
+
+.hit-speakers {
+  color: #888;
+  font-size: 14px;
+  margin: .5em
+}
+
+.right-panel {
+  background-color: #181818;
+  margin-left: 10%;
+}

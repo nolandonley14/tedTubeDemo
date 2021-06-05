@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import algoliasearch from 'algoliasearch/lite';
 import {
   Hits,
   Pagination,
   Highlight,
 } from 'react-instantsearch-dom';
 import PropTypes from 'prop-types';
-import '../Styles/Header.css';
+import '../Styles/Body.css';
 import Popup from './Popup.js';
 import Moment from 'moment';
+import YoutubeClient from '../Clients/Youtube.js';
 
 export default function Body() {
 
@@ -19,8 +19,6 @@ export default function Body() {
         </div>
   );
 }
-
-
 function Hit(props) {
 
   Moment.locale('en');
@@ -34,7 +32,7 @@ function Hit(props) {
 
     return (
       <>
-      <Popup showPopup={showPopup} setShowPopup={setShowPopup} info={props.hit} />
+      <Popup showPopup={showPopup} setShowPopup={setShowPopup} info={props.hit}/>
       <div className="card" >
         <img src={props.hit.image_url} align="left" alt={props.hit.name} onClick={openPopup}/>
         <div className="hit-name">
@@ -50,6 +48,5 @@ function Hit(props) {
 }
 
 Hit.propTypes = {
-  handleClick: PropTypes.object.isRequired,
   hit: PropTypes.object.isRequired,
 };

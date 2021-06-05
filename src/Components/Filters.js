@@ -1,19 +1,10 @@
 import React from 'react';
-import algoliasearch from 'algoliasearch/lite';
 import {
-  InstantSearch,
-  Hits,
-  SearchBox,
-  Pagination,
   Highlight,
-  ClearRefinements,
-  RefinementList,
   Configure,
   connectRefinementList
 } from 'react-instantsearch-dom';
-import PropTypes from 'prop-types';
-import '../Styles/Header.css';
-import Moment from 'moment';
+import '../Styles/Filters.css';
 
 const FirstRefinementList = ({
   items,

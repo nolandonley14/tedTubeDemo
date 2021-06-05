@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import {
-  InstantSearch,
-  Hits,
-  SearchBox,
-  Pagination,
-  Highlight,
-  ClearRefinements,
-  RefinementList,
-  Configure,
+  InstantSearch
 } from 'react-instantsearch-dom';
-import PropTypes from 'prop-types';
 import './App.css';
 import Header from './Components/Header.js';
 import Body from './Components/Body.js';
@@ -31,7 +23,6 @@ class App extends Component {
           <Filters/>
           <Body />
         </InstantSearch>
-
       </div>
     );
   }
